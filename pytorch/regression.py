@@ -98,7 +98,6 @@ class NN(nn.Module):
                 # zero out the gradients saved previously
                 optimizer.zero_grad()
                 self.zero_grad()
-
             print('epoch ({}/{}), batch_loss = {:.2f}, batch_acc = {:.2f}%'.format(e, epochs,
                                                                                    epoch_loss/train_data.size()[0],
                                                                                    epoch_acc*100.0/train_data.size()[0]))
@@ -160,18 +159,18 @@ def main():
     train_data_file = open(os.path.join(data_dir, 'train_delayValues_data.pkl'), 'rb')
     train_labels_file = open(os.path.join(data_dir, 'train_delayValues_label.pkl'), 'rb')
     train_data = np.asarray(pickle.load(train_data_file))
-    train_labels = np.asarray(pickle.load(train_labels_file)) / 1000000.0
+    train_labels = np.asarray(pickle.load(train_labels_file)) #/ 1000000.0
     test_data_file = open(os.path.join(data_dir, 'test_delayValues_data.pkl'), 'rb')
     test_labels_file = open(os.path.join(data_dir, 'test_delayValues_label.pkl'), 'rb')
     test_data = np.asarray(pickle.load(test_data_file))
-    test_labels = np.asarray(pickle.load(test_labels_file)) / 10000000.0
+    test_labels = np.asarray(pickle.load(test_labels_file)) #/ 10000000.0
 
     # preprocess them for easing the training...
-    train_data = preprocessing.scale(train_data)
-    test_data = preprocessing.scale(test_data)
+    # train_data = preprocessing.scale(train_data)
+    # test_data = preprocessing.scale(test_data)
     # train_labels = preprocessing.scale(train_labels)
     # test_labels = preprocessing.scale(test_labels)
-    print(train_labels)
+    # print(train_labels)
 
     train_data_for_lstm = train_data.reshape((-1, 1, 3))
     test_data_for_lstm = test_data.reshape((-1, 1, 3))

@@ -154,7 +154,7 @@ def convert_labels(mapping_dict, labels_arr):
         #     print(original_label)
     # new = np.vectorize(mapping_dict.get)(labels_arr)
     # print(new_arr)
-    # print(np.max(np.max(new_arr)), np.min(np.min(new_arr)))
+    # print(np.max(np.max(new_arr)), np.min(np.min(new_ arr)))
     max_list = sorted(set(new_arr.tolist()))
     print(max_list)
     return new_arr
@@ -194,7 +194,7 @@ def main():
     print('3d test data, 1d labels: ', test_data.shape, test_labels.shape)
 
     # create model and train
-    net = NN(input_dims=3, out_classes=100)
+    net = NN(input_dims=3, out_classes=int(1e6))
 
     ###############################################################################################3
     # the first two lines are mlp implementation, the next two run the lstm
